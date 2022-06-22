@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import TodoReducer, { TodoSlice } from "./todo/Todo";
+import TodoReducer, { TodoSliceName } from "./todo/Todo";
 
 export const combinedReducer = combineReducers({
-  [TodoSlice.name]: TodoReducer,
+  [TodoSliceName]: TodoReducer,
 });
