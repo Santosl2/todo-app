@@ -1,8 +1,11 @@
+import { useMemo } from "react";
+
 import { motion, LayoutGroup, Variants } from "framer-motion";
 
 import { Item, MainForm, TextWithBadge } from "@/components";
 import { Header } from "@/components/Header";
 import { SEO } from "@/SEO";
+import { useSelectorTodos } from "@/shared/hooks/useSelectorTodos";
 
 const listVariants: Variants = {
   visible: {
@@ -13,6 +16,14 @@ const listVariants: Variants = {
   hidden: {},
 };
 export default function Home() {
+  const tasks = useSelectorTodos();
+
+  const taskCreated = useMemo(() => tasks.length.toString(), [tasks]);
+  const taskCompleted = useMemo(
+    () => tasks.filter((t) => t.isCompleted).length.toString(),
+    [tasks]
+  );
+
   return (
     <>
       <SEO title="Teste" />
@@ -22,22 +33,25 @@ export default function Home() {
 
         <div className="mt-16 w-full">
           <div className="mb-6 flex justify-between">
-            <TextWithBadge value="0" text="Tarefas criadas" />
-            <TextWithBadge value="0 de 0" text="Tarefas concluídas" />
+            <TextWithBadge value={taskCreated} text="Tarefas criadas" />
+            <TextWithBadge
+              value={`${taskCompleted} de ${taskCreated}`}
+              text="Tarefas concluídas"
+            />
           </div>
           <LayoutGroup>
-            <motion.ul
-              variants={listVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-            >
-              <Item id={7} text="Tarefas" />
-              <Item id={7} text="Tarefas" />
-              <Item id={7} text="Tarefas" />
-              <Item id={7} text="Tarefas" />
-              <Item id={7} text="Tarefas" />
-            </motion.ul>
+            {tasks && (
+              <motion.ul
+                variants={listVariants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+              >
+                {tasks.map((task) => (
+                  <Item id={task.id} text={task.value} />
+                ))}
+              </motion.ul>
+            )}
           </LayoutGroup>
         </div>
       </main>
