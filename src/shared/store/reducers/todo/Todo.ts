@@ -3,12 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { todoReducers } from "./TodoReducers";
 
-const initialState = {
-  todos: [] as Todo[],
-};
+const initialState = [] as Todo[];
 
 export const TodoSlice = createSlice({
-  name: "@todos",
+  name: "todos",
   initialState,
   reducers: todoReducers,
 });
