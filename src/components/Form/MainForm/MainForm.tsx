@@ -30,6 +30,7 @@ export function MainForm(): JSX.Element {
         addTodo({
           id,
           value: inputValue,
+          isCompleted: false,
         })
       );
     },
