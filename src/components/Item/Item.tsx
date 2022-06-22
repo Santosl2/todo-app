@@ -6,7 +6,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Trash } from "phosphor-react";
 
 import { useSelectorTodos } from "@/shared/hooks/useSelectorTodos";
-import { updateTodo } from "@/shared/store/reducers/todo/Todo";
+import { updateTodo, deleteTodo } from "@/shared/store/reducers/todo/Todo";
 
 import { ItemProps } from "./Item.types";
 
@@ -26,19 +26,19 @@ const itemVariants: Variants = {
 };
 
 export function Item({ id, text }: ItemProps) {
-  const [isVisble, setIsVisble] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   const tasks = useSelectorTodos();
   const dispatch = useDispatch();
 
   const handleDelete = useCallback(() => {
-    setIsVisble(false);
+    setIsVisible(false);
 
-    console.log("delete", id);
-  }, []);
+    dispatch(deleteTodo({ id }));
+  }, [id]);
 
   const verifyIsCompleted = useMemo(
-    () => tasks.find((t) => t.id === id)?.isCompleted,
-    [tasks]
+    () => tasks.find((t) => t.id === id)?.isCompleted ?? false,
+    [tasks, id]
   );
 
   const handleChecked = useCallback(() => {
@@ -62,7 +62,7 @@ export function Item({ id, text }: ItemProps) {
 
   return (
     <AnimatePresence>
-      {isVisble && (
+      {isVisible && (
         <motion.li
           layout
           variants={itemVariants}
@@ -86,6 +86,7 @@ export function Item({ id, text }: ItemProps) {
             className="text-gray-300 transition-colors hover:text-red-500 hover:bg-gray-600 p-1 rounded"
             type="button"
             onClick={handleDelete}
+            data-testid="deleteItemTest"
           >
             <Trash size={24} />
           </button>

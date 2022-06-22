@@ -19,8 +19,14 @@ export default function Home() {
   const tasks = useSelectorTodos();
 
   const taskCreated = useMemo(() => tasks.length.toString(), [tasks]);
+
   const taskCompleted = useMemo(
     () => tasks.filter((t) => t.isCompleted).length.toString(),
+    [tasks]
+  );
+
+  const sortTasksById = useMemo(
+    () => tasks.map((t) => t).sort((a, b) => b.id - a.id),
     [tasks]
   );
 
@@ -40,15 +46,15 @@ export default function Home() {
             />
           </div>
           <LayoutGroup>
-            {tasks && (
+            {sortTasksById && (
               <motion.ul
                 variants={listVariants}
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
               >
-                {tasks.map((task) => (
-                  <Item id={task.id} text={task.value} />
+                {sortTasksById.map((task) => (
+                  <Item key={task.id} id={task.id} text={task.value} />
                 ))}
               </motion.ul>
             )}
