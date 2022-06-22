@@ -8,4 +8,10 @@ describe("TextWithBadge", () => {
     expect(screen.getByText("Test")).toBeInTheDocument();
     expect(screen.getByText("0")).toBeInTheDocument();
   });
+
+  it("match snapshot", () => {
+    render(<TextWithBadge text="Test" value="0" />);
+
+    expect(screen.getByText("Test")).toMatchSnapshot();
+  });
 });

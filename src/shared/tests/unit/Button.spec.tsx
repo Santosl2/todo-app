@@ -11,4 +11,13 @@ describe("ButtonTest", () => {
 
     expect(screen.getByText("Test")).toBeInTheDocument();
   });
+
+  it("match snapshot", () => {
+    render(
+      <Button type="button" disabled={false}>
+        Test
+      </Button>
+    );
+    expect(screen.getByText("Test")).toMatchSnapshot();
+  });
 });
