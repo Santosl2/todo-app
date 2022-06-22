@@ -73,6 +73,7 @@ export function Item({ id, text }: ItemProps) {
         >
           <label className="flex items-center gap-3">
             <input
+              data-testid="checkboxItemTest"
               id="checkbox"
               type="checkbox"
               className="h-4 w-4 cursor-pointer rounded-full border-blue-300 bg-transparent checked:bg-purple-500 checked:hover:bg-purple-500 focus:ring-0 transition-all"
