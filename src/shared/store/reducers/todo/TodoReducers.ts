@@ -26,4 +26,10 @@ export const todoReducers = {
       },
     ];
   },
+
+  deleteTodo: (state: any, { payload }: PayloadAction<Pick<Todo, "id">>) => {
+    const findAllStates = state.filter((e: Todo) => e.id !== payload.id);
+
+    return [...findAllStates];
+  },
 };
