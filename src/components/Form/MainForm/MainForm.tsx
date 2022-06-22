@@ -34,7 +34,7 @@ export function MainForm(): JSX.Element {
         })
       );
     },
-    [inputValue]
+    [inputValue, todoSelector]
   );
 
   return (
