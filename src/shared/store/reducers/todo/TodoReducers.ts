@@ -10,4 +10,20 @@ export const todoReducers = {
       },
     ];
   },
+
+  updateTodo: (
+    state: any,
+    { payload }: PayloadAction<Pick<Todo, "id" | "isCompleted">>
+  ) => {
+    const findByPayloadId = state.find((e: Todo) => e.id === payload.id);
+    const findAllStates = state.filter((e: Todo) => e.id !== payload.id);
+
+    return [
+      ...findAllStates,
+      {
+        ...findByPayloadId,
+        isCompleted: payload.isCompleted,
+      },
+    ];
+  },
 };

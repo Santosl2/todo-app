@@ -1,8 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useCallback, useMemo, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Trash } from "phosphor-react";
+
+import { useSelectorTodos } from "@/shared/hooks/useSelectorTodos";
+import { updateTodo } from "@/shared/store/reducers/todo/Todo";
 
 import { ItemProps } from "./Item.types";
 
@@ -22,8 +26,9 @@ const itemVariants: Variants = {
 };
 
 export function Item({ id, text }: ItemProps) {
-  const [checkBoxChecked, setCheckBoxChecked] = useState(false);
   const [isVisble, setIsVisble] = useState(true);
+  const tasks = useSelectorTodos();
+  const dispatch = useDispatch();
 
   const handleDelete = useCallback(() => {
     setIsVisble(false);
@@ -31,15 +36,29 @@ export function Item({ id, text }: ItemProps) {
     console.log("delete", id);
   }, []);
 
+  const verifyIsCompleted = useMemo(
+    () => tasks.find((t) => t.id === id)?.isCompleted,
+    [tasks]
+  );
+
+  const handleChecked = useCallback(() => {
+    dispatch(
+      updateTodo({
+        id,
+        isCompleted: !verifyIsCompleted,
+      })
+    );
+  }, [verifyIsCompleted]);
+
   const classNamesFromText = useMemo(() => {
     return ["line-through", "text-sm", "text-gray-100", "text-gray-300"]
       .filter((e) =>
-        !checkBoxChecked
+        !verifyIsCompleted
           ? !e.includes("line-through") && !e.includes("text-gray-300")
           : e
       )
       .join(" ");
-  }, [checkBoxChecked]);
+  }, [verifyIsCompleted]);
 
   return (
     <AnimatePresence>
@@ -54,10 +73,12 @@ export function Item({ id, text }: ItemProps) {
         >
           <label className="flex items-center gap-3">
             <input
+              data-testid="checkboxItemTest"
               id="checkbox"
               type="checkbox"
-              onChange={(e) => setCheckBoxChecked(e.target.checked)}
               className="h-4 w-4 cursor-pointer rounded-full border-blue-300 bg-transparent checked:bg-purple-500 checked:hover:bg-purple-500 focus:ring-0 transition-all"
+              onChange={handleChecked}
+              defaultChecked={verifyIsCompleted}
             />
             <p className={classNamesFromText}>{text}</p>
           </label>
