@@ -21,16 +21,6 @@ const mockedSelectorTodos = jest.spyOn(
   "useSelectorTodos"
 );
 
-const initialState = {
-  todos: [
-    {
-      id: 0,
-      value: "test",
-      isCompleted: false,
-    },
-  ],
-};
-
 describe("Item", () => {
   let mockArray: Todo[] = [];
   const useDispatchMock = ReactRedux.useDispatch;
@@ -62,7 +52,7 @@ describe("Item", () => {
       });
     });
 
-    customRender(<Item id={1} text="Test Task Snap" />, initialState);
+    customRender(<Item id={1} text="Test Task Snap" />);
 
     const todoCheckBox = screen.getByTestId(
       "checkboxItemTest"
@@ -77,15 +67,7 @@ describe("Item", () => {
   });
 
   it("match snapshot", () => {
-    (useDispatchMock as jest.Mock).mockImplementation(() => {
-      mockArray.push({
-        id: 1,
-        isCompleted: false,
-        value: "Test Task Snap",
-      });
-    });
-
-    customRender(<Item id={1} text="Test Task Snap" />);
+    customRender(<Item id={2} text="Test Task Snap" />);
 
     expect(screen.getByText("Test Task Snap")).toMatchSnapshot();
   });
