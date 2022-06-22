@@ -5,11 +5,13 @@ import { todoReducers } from "./TodoReducers";
 
 const initialState = [] as Todo[];
 
-export const TodoSlice = createSlice({
+const TodoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: todoReducers,
 });
+
+export const TodoSliceName = TodoSlice.name;
 
 export const { addTodo } = TodoSlice.actions;
 
