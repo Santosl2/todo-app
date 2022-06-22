@@ -13,8 +13,12 @@ export function Item({ id, text }: ItemProps) {
   }, []);
 
   const classNamesFromText = useMemo(() => {
-    return ["line-through", "text-sm", "text-gray-100"]
-      .filter((e) => (checkBoxChecked ? e !== "line-through" : e))
+    return ["line-through", "text-sm", "text-gray-100", "text-gray-300"]
+      .filter((e) =>
+        !checkBoxChecked
+          ? !e.includes("line-through") && !e.includes("text-gray-300")
+          : e
+      )
       .join(" ");
   }, [checkBoxChecked]);
 

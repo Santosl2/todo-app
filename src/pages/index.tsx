@@ -1,4 +1,4 @@
-import { MainForm, TextWithBadge } from "@/components";
+import { Item, MainForm, TextWithBadge } from "@/components";
 import { Header } from "@/components/Header";
 import { SEO } from "@/SEO";
 
@@ -15,6 +15,11 @@ export default function Home() {
             <TextWithBadge value="0" text="Tarefas criadas" />
             <TextWithBadge value="0 de 0" text="Tarefas concluídas" />
           </div>
+          <Item id={7} text="Tarefas" />
+          <Item id={7} text="Tarefas" />
+          <Item id={7} text="Tarefas" />
+          <Item id={7} text="Tarefas" />
+          <Item id={7} text="Tarefas" />
         </div>
       </main>
     </>
