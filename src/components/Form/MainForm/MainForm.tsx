@@ -1,4 +1,10 @@
-import { FormEvent, useCallback, useMemo, useRef, useState } from "react";
+import {
+  BaseSyntheticEvent,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useDispatch } from "react-redux";
 
 import { PlusCircle } from "phosphor-react";
@@ -21,7 +27,7 @@ export function MainForm(): JSX.Element {
   );
 
   const handleSubmit = useCallback(
-    (e: FormEvent) => {
+    (e: BaseSyntheticEvent) => {
       e.preventDefault();
 
       const id = todoSelector.length + 1;
@@ -33,6 +39,9 @@ export function MainForm(): JSX.Element {
           isCompleted: false,
         })
       );
+
+      e.target.reset();
+      setInputValue("");
     },
     [inputValue, todoSelector]
   );
