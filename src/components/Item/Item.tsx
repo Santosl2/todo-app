@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useCallback, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Trash } from "phosphor-react";
 
 import { useSelectorTodos } from "@/shared/hooks/useSelectorTodos";
@@ -19,9 +20,6 @@ const itemVariants: Variants = {
     transition: {
       duration: 0.4,
     },
-  },
-  exit: {
-    opacity: 0,
   },
 };
 
@@ -61,14 +59,13 @@ export function Item({ id, text }: ItemProps) {
   }, [verifyIsCompleted]);
 
   return (
-    <AnimatePresence>
+    <>
       {isVisible && (
         <motion.li
           layout
           variants={itemVariants}
           initial="initial"
           animate="animate"
-          exit="exit"
           className="mb-3 flex w-full justify-between rounded-lg bg-gray-500 p-4"
         >
           <label className="flex items-center gap-3">
@@ -92,6 +89,6 @@ export function Item({ id, text }: ItemProps) {
           </button>
         </motion.li>
       )}
-    </AnimatePresence>
+    </>
   );
 }

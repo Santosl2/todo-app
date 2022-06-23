@@ -1,20 +1,21 @@
 import { useMemo } from "react";
 
-import { motion, LayoutGroup, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 import { Item, MainForm, TextWithBadge } from "@/components";
 import { Header } from "@/components/Header";
 import { SEO } from "@/SEO";
 import { useSelectorTodos } from "@/shared/hooks/useSelectorTodos";
 
-const listVariants: Variants = {
+const mainVariants: Variants = {
   visible: {
-    transition: {
-      staggerChildren: 0.5,
-    },
+    opacity: 1,
   },
-  hidden: {},
+  hidden: {
+    opacity: 0,
+  },
 };
+
 export default function Home() {
   const tasks = useSelectorTodos();
 
@@ -34,7 +35,12 @@ export default function Home() {
     <>
       <SEO title="Teste" />
       <Header />
-      <main className="mx-auto my-0 flex max-w-[46rem] flex-col px-2">
+      <motion.main
+        animate="visible"
+        initial="hidden"
+        variants={mainVariants}
+        className="mx-auto my-0 flex max-w-[46rem] flex-col px-2"
+      >
         <MainForm />
 
         <div className="mt-16 w-full">
@@ -45,22 +51,15 @@ export default function Home() {
               text="Tarefas concluídas"
             />
           </div>
-          <LayoutGroup>
-            {sortTasksById && (
-              <motion.ul
-                variants={listVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-              >
-                {sortTasksById.map((task) => (
-                  <Item key={task.id} id={task.id} text={task.value} />
-                ))}
-              </motion.ul>
-            )}
-          </LayoutGroup>
+          {sortTasksById && (
+            <ul>
+              {sortTasksById.map((task) => (
+                <Item key={task.id} id={task.id} text={task.value} />
+              ))}
+            </ul>
+          )}
         </div>
-      </main>
+      </motion.main>
     </>
   );
 }
