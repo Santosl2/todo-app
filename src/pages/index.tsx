@@ -47,7 +47,7 @@ export default function Home() {
           <div className="mb-6 flex justify-between">
             <TextWithBadge value={taskCreated} text="Tarefas criadas" />
             <TextWithBadge
-              value={taskCreated}
+              value={taskCompleted}
               text="Tarefas concluídas"
               color="text-purple-300"
             />
