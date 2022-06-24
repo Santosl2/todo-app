@@ -64,6 +64,8 @@ npm run test
 
 - [Redux](https://redux.js.org/)
 
+- [Redux Persist](https://github.com/rt2zz/redux-persist)
+
 <br/>
 
 ## Collaborators
