@@ -58,7 +58,11 @@ export function MainForm(): JSX.Element {
           setInputValue(e.target.value);
         }}
       />
-      <Button type="submit" disabled={buttonIsDisabled}>
+      <Button
+        type="submit"
+        disabled={buttonIsDisabled}
+        data-testid="createBtnTest"
+      >
         Criar <PlusCircle weight="bold" size={16} />
       </Button>
     </form>
