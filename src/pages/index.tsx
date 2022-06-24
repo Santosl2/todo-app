@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <>
-      <SEO title="Teste" />
+      <SEO title="Anote suas tarefas" />
       <Header />
       <motion.main
         animate="visible"
