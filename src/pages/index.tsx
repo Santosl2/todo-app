@@ -33,7 +33,10 @@ export default function Home() {
 
   return (
     <>
-      <SEO title="Anote suas tarefas" />
+      <SEO
+        title="Anote suas tarefas"
+        description="Anote os seus a fazeres de forma rápida e simples!"
+      />
       <Header />
       <motion.main
         animate="visible"

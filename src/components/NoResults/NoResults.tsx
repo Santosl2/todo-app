@@ -6,6 +6,9 @@ export function NoResults() {
       <Notepad size={56} />{" "}
       <strong className="mt-4">Você ainda não tem tarefas cadastradas</strong>
       <p>Crie tarefas e organize seus itens a fazer</p>
+      <small>
+        Feito por <a href="https://github.com/Santosl2">Matheus Filype</a>
+      </small>
     </div>
   );
 }
