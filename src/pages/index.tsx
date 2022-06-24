@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import { motion, Variants } from "framer-motion";
 
-import { Item, MainForm, TextWithBadge } from "@/components";
+import { Item, MainForm, NoResults, TextWithBadge } from "@/components";
 import { Header } from "@/components/Header";
 import { SEO } from "@/SEO";
 import { useSelectorTodos } from "@/shared/hooks/useSelectorTodos";
@@ -58,6 +58,7 @@ export default function Home() {
               ))}
             </ul>
           )}
+          {sortTasksById.length <= 0 && <NoResults />}
         </div>
       </motion.main>
     </>
