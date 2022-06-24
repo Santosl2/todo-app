@@ -1,8 +1,8 @@
 # 📝 Todo App
 
-A small project made using Next JS, Testing Library, Framer Motion, Redux and Redux Persist.
+A small project made using Next JS, Tailwind, Testing Library, Framer Motion, Redux and Redux Persist.
 
-The layout was made by Millena Kupsinskü Martins from Rocketseat
+The layout was made by **Millena Kupsinskü Martins** from Rocketseat
 
 
 ![Screenshot from 2022-06-23 22-46-21](https://user-images.githubusercontent.com/67132916/175445857-e63cd63e-30ba-4579-87d6-0595a299588e.png)
