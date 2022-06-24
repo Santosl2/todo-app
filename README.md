@@ -5,7 +5,8 @@ A small project made using Next JS, Tailwind, Testing Library, Framer Motion, Re
 The layout was made by **Millena Kupsinskü Martins** from Rocketseat
 
 
-![ToDo App By Matheus Filype](https://user-images.githubusercontent.com/67132916/175569806-0321d3ca-f044-4610-9670-176383cc6224.png)
+
+![todo gif](https://user-images.githubusercontent.com/67132916/175570378-1aaed841-145e-4ad7-9bdd-11062d61ea9a.gif)
 
 <br/>
 
