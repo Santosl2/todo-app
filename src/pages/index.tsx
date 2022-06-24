@@ -27,7 +27,7 @@ export default function Home() {
   );
 
   const sortTasksById = useMemo(
-    () => tasks.map((t) => t).sort((a, b) => b.id - a.id),
+    () => [...tasks].sort((a, b) => b.id - a.id),
     [tasks]
   );
 

@@ -16,6 +16,7 @@ const customJestConfig = {
     "^@/components/(.*)$": "<rootDir>/src/components/$1",
     "^@/utils/(.*)$": "<rootDir>/src/shared/utils/$1",
     "^@/pages/(.*)$": "<rootDir>/src/pages/$1",
+    "^@/pages$": "<rootDir>/src/pages/index.tsx",
     "^@/constants$": "<rootDir>/src/constants/index.ts",
     "^@/SEO$": "<rootDir>/src/SEO.tsx",
     "^@styles/(.*)$": "<rootDir>/src/styles/$1",

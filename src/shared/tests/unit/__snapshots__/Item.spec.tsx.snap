@@ -4,6 +4,6 @@ exports[`Item match snapshot 1`] = `
 <p
   class="text-sm text-gray-100"
 >
-  Test Task Snap
+  Test Task
 </p>
 `;
