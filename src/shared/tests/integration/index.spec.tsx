@@ -65,12 +65,14 @@ describe("IndexPage", () => {
 
     expect(inputAddTodo.value).toBe(dataValueToCreate);
 
+    expect(createBtn).not.toHaveAttribute("disabled");
+
     fireEvent.click(createBtn);
 
     expect(screen.getByText(dataValueToCreate)).toBeInTheDocument();
   });
 
-  it("should be able to to create and delete Todo", () => {
+  it("should be able to create and delete Todo", () => {
     render();
 
     const inputAddTodo = screen.getByPlaceholderText(
@@ -84,6 +86,8 @@ describe("IndexPage", () => {
 
     expect(inputAddTodo.value).toBe(dataValueToCreate);
 
+    expect(createBtn).not.toHaveAttribute("disabled");
+
     fireEvent.click(createBtn);
 
     const deleteBtn = screen.getAllByTestId("deleteItemTest")[0];
@@ -93,6 +97,12 @@ describe("IndexPage", () => {
     fireEvent.click(deleteBtn);
 
     expect(screen.queryByText(dataValueToCreate)).not.toBeInTheDocument();
+  });
+
+  it("should not be able to create change Todo when input is empty", () => {
+    render();
+
+    expect(screen.getByTestId("createBtnTest")).toHaveAttribute("disabled");
   });
 
   it("should be able to to create change Todo to completed", () => {
@@ -108,6 +118,8 @@ describe("IndexPage", () => {
     });
 
     expect(inputAddTodo.value).toBe(dataValueToCreate);
+
+    expect(createBtn).not.toHaveAttribute("disabled");
 
     fireEvent.click(createBtn);
 

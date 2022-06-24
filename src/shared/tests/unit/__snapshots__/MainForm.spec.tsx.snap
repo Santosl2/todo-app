@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainForm match snapshot 1`] = `
+<div>
+  <form
+    class="flex w-full items-center justify-center gap-2"
+  >
+    <input
+      class="h-[3.375rem] w-full resize-none rounded-lg border border-gray-700 bg-gray-500 pl-4 text-gray-100 placeholder:text-gray-300 focus:border-blue-300 focus:outline-none"
+      placeholder="O que você precisa fazer?"
+    />
+    <button
+      class="flex h-[3.25rem] items-center gap-2 rounded-lg bg-blue-500 px-4 text-sm font-bold text-gray-100 transition-colors hover:bg-blue-300 disabled:cursor-not-allowed disabled:bg-gray-300"
+      data-testid="createBtnTest"
+      disabled=""
+      type="submit"
+    >
+      Criar 
+      <svg
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 256 256"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="none"
+          height="256"
+          width="256"
+        />
+        <circle
+          cx="128"
+          cy="128"
+          fill="none"
+          r="96"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="24"
+        />
+        <line
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="24"
+          x1="88"
+          x2="168"
+          y1="128"
+          y2="128"
+        />
+        <line
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="24"
+          x1="128"
+          x2="128"
+          y1="88"
+          y2="168"
+        />
+      </svg>
+    </button>
+  </form>
+</div>
+`;
